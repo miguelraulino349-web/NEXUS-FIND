@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100d18">
+<title>DARK SEARCH 🌑</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(ellipse at top,#35204f,#100d18 70%);
+  color:#fff;
+  font-family:Arial,sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+main{
+  width:100%;
+  max-width:500px;
+  text-align:center;
+}
+
+.logo{
+  font-size:36px;
+  font-weight:900;
+  letter-spacing:2px;
+  color:#c49aff;
+  text-shadow:0 0 25px #8e44ff66;
+}
+
+.subtitle{
+  color:#b9accb;
+  margin:12px 0 30px;
+}
+
+input,select,button{
+  width:100%;
+  padding:15px;
+  margin:7px 0;
+  border-radius:13px;
+  font-size:16px;
+}
+
+input,select{
+  background:#1c1727;
+  color:white;
+  border:1px solid #493566;
+  outline:none;
+}
+
+input:focus{
+  border-color:#b06cff;
+  box-shadow:0 0 12px #9747ff44;
+}
+
+button{
+  background:linear-gradient(90deg,#7136d5,#b16cff);
+  color:white;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:active{
+  transform:scale(.98);
+}
+
+.note{
+  color:#91849f;
+  font-size:12px;
+  margin-top:25px;
+}
+</style>
+</head>
+
+<body>
+<main>
+  <div class="logo">☾ DARK SEARCH</div>
+  <p class="subtitle">Sua busca. Seu universo.</p>
+
+  <form id="formBusca">
+    <input
+      id="pesquisa"
+      type="search"
+      placeholder="O que você quer encontrar?"
+      autocomplete="off"
+      required
+    >
+
+    <select id="buscador">
+      <option value="duck">DuckDuckGo</option>
+      <option value="google">Google</option>
+      <option value="bing">Bing</option>
+    </select>
+
+    <button type="submit">⌕ PESQUISAR</button>
+  </form>
+
+  <div class="note">
+    DARK SEARCH • Busca gratuita • 2026
+  </div>
+</main>
+
+<script>
+const form = document.getElementById("formBusca");
+
+form.addEventListener("submit", function(event){
+  event.preventDefault();
+
+  const texto = document
+    .getElementById("pesquisa")
+    .value.trim();
+
+  const tipo = document
+    .getElementById("buscador")
+    .value;
+
+  if(!texto) return;
+
+  const buscadores = {
+    duck: "https://duckduckgo.com/?q=",
+    google: "https://www.google.com/search?q=",
+    bing: "https://www.bing.com/search?q="
+  };
+
+  window.location.href =
+    buscadores[tipo] + encodeURIComponent(texto);
+});
+</script>
+</body>
+</html>
